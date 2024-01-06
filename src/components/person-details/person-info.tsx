@@ -5,6 +5,8 @@ import { fetchVehicleByUrl } from '@/hooks/useGetVehicle';
 import { useQueries } from '@tanstack/react-query';
 import { Skeleton } from '../shared';
 
+import { motion } from 'framer-motion';
+
 interface PersonInfoProps {
   person: Person;
 }
@@ -14,7 +16,16 @@ export const PersonInfo = ({ person }: PersonInfoProps) => {
     person;
 
   return (
-    <section id={`Person:${name} Details`}>
+    <motion.section
+      id={`Person:${name} Details`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div>
+        <h2 className="px-4 pt-8 text-3xl text-black-ravn font-bold">{name}</h2>
+      </div>
+
       <SectionHeader title="General Details" />
       <div className="flex flex-col w-full">
         <DataCell title="Eye Color" label={eye_color} />
@@ -24,7 +35,7 @@ export const PersonInfo = ({ person }: PersonInfoProps) => {
       </div>
 
       <PersonVehiclesInfo vehicles={vehicles} />
-    </section>
+    </motion.section>
   );
 };
 

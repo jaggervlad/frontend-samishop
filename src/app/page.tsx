@@ -1,4 +1,3 @@
-import { Layout } from '@/components/layout';
 import { PeopleList } from '@/components/people-list';
 import { Metadata } from 'next';
 
@@ -10,10 +9,8 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <Layout>
-      <div className="w-full lg:hidden">
-        <PeopleList />
-      </div>
-    </Layout>
+    <div className="w-full lg:hidden">
+      <PeopleList />
+    </div>
   );
 }
